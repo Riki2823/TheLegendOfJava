@@ -27,6 +27,10 @@
         <div id=canvaContainer>
             <canvas id="game" width="700" height="700"></canvas>
         </div>
+
+        <script type = "application/json" id="roomData">
+            ${room};
+        </script>
         <script>
             let canvas = document.getElementById('game');
             let ctx = canvas.getContext('2d');
@@ -70,7 +74,7 @@
                 if (x > 667 && x < 676){
                     if(y > 594 && y < 605){
                         moveEast();
-                        SourceBuffer
+                    
                     }
                 }
 
@@ -82,25 +86,36 @@
 
 
             });
-
+            
+            let feet = true;
             function moveWest(){
-                ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteX -=40;           
-                ctx.drawImage(sprite, 100, 60, 60, 60, spriteX, spriteY, 60, 60);
+                if (feet){
+                    console.log("true");
+                    ctx.clearRect(spriteX, spriteY, 60, 60);
+                    spriteX -=10;
+                    ctx.drawImage(sprite, 160, 60, 60, 60, spriteX, spriteY, 60, 60);
+                    feet = false;
+                }else if(!feet){
+                    ctx.clearRect(spriteX, spriteY, 60, 60);
+                    spriteX -=10;
+                    ctx.drawImage(sprite, 0, 60, 60, 60, spriteX, spriteY, 60, 60);
+                    feet = true;
+                };
+
             }
             function moveNorth(){
                 ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteY -=40;           
+                spriteY -=20;
                 ctx.drawImage(sprite, 100, 180, 60, 60, spriteX, spriteY, 60, 60);
             }
             function moveEast(){
                 ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteX +=40;           
+                spriteX +=20;
                 ctx.drawImage(sprite, 100, 120, 60, 55, spriteX, spriteY, 60, 60);
             }
             function moveSouth(){
                 ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteY +=40;           
+                spriteY +=20;
                 ctx.drawImage(sprite, 100, 0, 60, 60, spriteX, spriteY, 60, 60);
             }
         </script>
