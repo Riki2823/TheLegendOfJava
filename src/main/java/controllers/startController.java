@@ -1,5 +1,11 @@
 package controllers;
 
+import Service.TextService;
+import Utils.SelectMaze;
+import model.Maze;
+import model.MazeBase;
+import model.Room;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +30,14 @@ public class startController extends HttpServlet {
         session.setAttribute("mapId", mapId);
         req.setAttribute("mapId", mapId);
 
+        Maze inUseMaze = SelectMaze.createMaze(mapId);
+        int actualRoom = 1;
+        session.setAttribute("actualRoom", actualRoom);
+
+        String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoom);
+        roomJSONString = roomJSONString.toLowerCase();
+        req.setAttribute("room", roomJSONString);
+        System.out.println(roomJSONString);
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);
     }

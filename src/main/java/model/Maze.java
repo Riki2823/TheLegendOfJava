@@ -13,5 +13,9 @@ public class Maze {
         return this.rooms.get(nroom);
     }
 
+    public Map<Integer, Room> getRooms (){
+        return this.rooms;
+    }
+
 
 }

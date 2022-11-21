@@ -38,4 +38,9 @@ public class Door implements RoomSide{
     public void setLevel(int level) {
         this.level = level;
     }
+
+    @Override
+    public String toString() {
+        return "\"Door\"";
+    }
 }

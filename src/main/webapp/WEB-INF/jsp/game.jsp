@@ -31,7 +31,14 @@
         <script type = "application/json" id="roomData">
             ${room};
         </script>
+
         <script>
+
+            let roomString = document.getElementById("roomData").innerHTML;
+            roomString = roomString.replace(";", "");
+            let room = JSON.parse(roomString);
+            drawRoom(room);
+
             let canvas = document.getElementById('game');
             let ctx = canvas.getContext('2d');
 
@@ -101,22 +108,29 @@
                     ctx.drawImage(sprite, 0, 60, 60, 60, spriteX, spriteY, 60, 60);
                     feet = true;
                 };
-
+                console.log(room.walls.west);
             }
             function moveNorth(){
                 ctx.clearRect(spriteX, spriteY, 60, 60);
                 spriteY -=20;
                 ctx.drawImage(sprite, 100, 180, 60, 60, spriteX, spriteY, 60, 60);
+                console.log(room.walls.north);
             }
             function moveEast(){
                 ctx.clearRect(spriteX, spriteY, 60, 60);
                 spriteX +=20;
                 ctx.drawImage(sprite, 100, 120, 60, 55, spriteX, spriteY, 60, 60);
+                console.log(room.walls.east);
             }
             function moveSouth(){
                 ctx.clearRect(spriteX, spriteY, 60, 60);
                 spriteY +=20;
                 ctx.drawImage(sprite, 100, 0, 60, 60, spriteX, spriteY, 60, 60);
+                console.log(room.walls.south);
+            }
+
+            function drawRoom(room){
+                ctx.
             }
         </script>
     </body>

@@ -1,22 +1,19 @@
 package model;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class MazeBase implements MazeBuilder{
 
    private Maze maze = new Maze();
     @Override
     public void buildRoom(int idRoom) {
-        Room room = new Room();
-        room.setId(idRoom);
-        Map<Room.Dirrection, RoomSide> sizes = new HashMap<>();
-        room.setSizes(sizes);
+        Room room = new Room(idRoom);
         room.setSide(Room.Dirrection.NORTH, new Wall());
         room.setSide(Room.Dirrection.SOUTH, new Wall());
         room.setSide(Room.Dirrection.EAST, new Wall());
-        room.setSide(Room.Dirrection.EAST, new Wall());
+        room.setSide(Room.Dirrection.WEST, new Wall());
         maze.addRoom(idRoom, room);
+        System.out.println(room.getId());
     }
 
     @Override
@@ -54,10 +51,8 @@ public class MazeBase implements MazeBuilder{
         Door door = new Door(false, key, level);
         Room r1 = maze.getRoom(roomFrom);
         Room r2 = maze.getRoom(roomTo);
-        Map<Room.Dirrection, RoomSide> sizes = r1.getSizes();
-        sizes.put(dir, door);
-        Map<Room.Dirrection, RoomSide> sizes2 = r2.getSizes();
-        sizes2.put(contaridir(dir), door);
+        r1.setSide(dir, door);
+        r2.setSide(contaridir(dir), door);
     }
 
     @Override
@@ -73,6 +68,6 @@ public class MazeBase implements MazeBuilder{
 
     @Override
     public Maze getMaze() {
-        return null;
+        return this.maze;
     }
 }

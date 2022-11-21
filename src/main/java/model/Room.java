@@ -1,20 +1,27 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Room {
     private boolean isTarget = false;
     int id;
+
+    public Room(int idRoom) {
+        this.id = idRoom;
+    }
+
     public enum Dirrection{
         NORTH,
         SOUTH,
         WEST,
         EAST
     }
-    private Map<Dirrection, RoomSide> sizes;
-    private List<Item> items;
+    private Map<Dirrection, RoomSide> sizes = new HashMap<>();
+    private List<Item> items = new ArrayList<>();
 
 
 
@@ -32,7 +39,7 @@ public class Room {
         this.id = id;
     }
 
-    public Map<Dirrection, RoomSide> getSizes() {
+    public Map<Dirrection, RoomSide> getSides() {
         return sizes;
     }
 

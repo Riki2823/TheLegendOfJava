@@ -8,10 +8,14 @@
         <title>TheLegendOfJava</title>
     </head>
     <body>
-        <h1>Bienvenido a The Legend Of Java, vas a probar el mapa 1</h1>
+        <h1>Bienvenido a The Legend Of Java</h1>
+        <h2>Selecciona la mazmorra a la que quieras acceder</h2>
         <form class="button" action="/start" method="post">
+            <select id="mapId" name="mapId">
+                <option value="1">Tutorial</option>
+                <option value="2">Ya veremos</option>
+            </select>
             <input  type="submit" value="Empezar"></input>
-            <input name="mapId" type="hidden" value="1"></input>
         </form>
 
     </body>
