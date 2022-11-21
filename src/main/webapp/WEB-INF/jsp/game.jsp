@@ -29,18 +29,19 @@
         </div>
 
         <script type = "application/json" id="roomData">
-            ${room};
+            ${room}
         </script>
 
         <script>
+            let canvas = document.getElementById('game');
+            let ctx = canvas.getContext('2d');
+
 
             let roomString = document.getElementById("roomData").innerHTML;
             roomString = roomString.replace(";", "");
             let room = JSON.parse(roomString);
             drawRoom(room);
 
-            let canvas = document.getElementById('game');
-            let ctx = canvas.getContext('2d');
 
             let brujula = new Image();
             brujula.src = '/img/brujula.jpg';
@@ -130,7 +131,8 @@
             }
 
             function drawRoom(room){
-                ctx.
+                ctx.fillStyle = 'black';
+
             }
         </script>
     </body>
