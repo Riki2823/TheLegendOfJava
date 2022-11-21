@@ -39,12 +39,17 @@ public class Room {
     public void setSizes(Map<Dirrection, RoomSide> sizes) {
         this.sizes = sizes;
     }
-
+    public void setSide(Dirrection dir, RoomSide side){
+        this.sizes.put(dir,side);
+    }
     public List<Item> getItems() {
         return items;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+    public void setItem (Item item){
+        this.items.add(item);
     }
 }
