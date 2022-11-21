@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class MazeBase implements MazeBuilder{
 
-    Maze maze = new Maze();
+   private Maze maze = new Maze();
     @Override
     public void buildRoom(int idRoom) {
         Room room = new Room();
@@ -31,7 +31,6 @@ public class MazeBase implements MazeBuilder{
         Room r2 = maze.getRoom(roomTo);
         r1.setSide(dir, door);
         r2.setSide(contaridir(dir), door);
-
     }
 
     private Room.Dirrection contaridir(Room.Dirrection dir) {

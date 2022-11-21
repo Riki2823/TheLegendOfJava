@@ -1,9 +1,9 @@
 package model;
 
 public class Door implements RoomSide{
-    boolean isOpen;
-    Key key;
-    int level;
+    private boolean isOpen;
+    private Key key;
+    private int level;
 
     public Door(boolean isOpen, Key key, int level) {
         this.isOpen = isOpen;

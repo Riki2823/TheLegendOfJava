@@ -13,10 +13,10 @@ public class Room {
         WEST,
         EAST
     }
-
     private Map<Dirrection, RoomSide> sizes;
-
     private List<Item> items;
+
+
 
     public void isTarget(boolean isTarget){
         this.isTarget = isTarget;
@@ -45,7 +45,6 @@ public class Room {
     public List<Item> getItems() {
         return items;
     }
-
     public void setItems(List<Item> items) {
         this.items = items;
     }
