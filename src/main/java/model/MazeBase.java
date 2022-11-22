@@ -23,9 +23,10 @@ public class MazeBase implements MazeBuilder{
 
     @Override
     public void buildDoor(int roomFrom, int roomTo, Room.Dirrection dir) {
-        Door door = new Door(true);
+
         Room r1 = maze.getRoom(roomFrom);
         Room r2 = maze.getRoom(roomTo);
+        Door door = new Door(true, r1, r2);
         r1.setSide(dir, door);
         r2.setSide(contaridir(dir), door);
     }
@@ -48,9 +49,9 @@ public class MazeBase implements MazeBuilder{
 
     @Override
     public void buildDoor(int roomFrom, int roomTo, Room.Dirrection dir, Key key, int level) {
-        Door door = new Door(false, key, level);
         Room r1 = maze.getRoom(roomFrom);
         Room r2 = maze.getRoom(roomTo);
+        Door door = new Door(false, key, level, r1, r2);
         r1.setSide(dir, door);
         r2.setSide(contaridir(dir), door);
     }

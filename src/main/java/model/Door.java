@@ -5,13 +5,13 @@ public class Door implements RoomSide{
     private Key key;
     private int level;
 
-    public Door(boolean isOpen, Key key, int level) {
+    public Door(boolean isOpen, Key key, int level, Room room1, Room room2) {
         this.isOpen = isOpen;
         this.key = key;
         this.level = level;
     }
 
-    public Door(boolean isOpen){
+    public Door(boolean isOpen, Room room1, Room room2){
         this.isOpen = isOpen;
     }
 

@@ -16,7 +16,7 @@
 
             canvas{
                 border: 3px solid black;
-                margin: 25%;
+                margin: 5%;
             }
 
 
@@ -24,8 +24,15 @@
     </head>
     <body>
         <h1>Bienvenido al Mapa ${mapId}</h1>
+
+        <p>
+            Room: ${actualRoom}
+        </p>
         <div id=canvaContainer>
             <canvas id="game" width="700" height="700"></canvas>
+            <form id="dirForm" method="get" action="/dir">
+                <input id="dir" name="dir" type="hidden"></input>
+            </form>
         </div>
 
         <script type = "application/json" id="roomData">
@@ -91,48 +98,29 @@
                        moveSouth();
                     }
                 }
-
-
             });
             
             let feet = true;
             function moveWest(){
-                if (feet){
-                    console.log("true");
-                    ctx.clearRect(spriteX, spriteY, 60, 60);
-                    spriteX -=10;
-                    ctx.drawImage(sprite, 160, 60, 60, 60, spriteX, spriteY, 60, 60);
-                    feet = false;
-                }else if(!feet){
-                    ctx.clearRect(spriteX, spriteY, 60, 60);
-                    spriteX -=10;
-                    ctx.drawImage(sprite, 0, 60, 60, 60, spriteX, spriteY, 60, 60);
-                    feet = true;
-                };
+                document.getElementById("dir").value = "w";
+                document.getElementById("dirForm").submit();
                 console.log(room.walls.west);
             }
             function moveNorth(){
-                ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteY -=20;
-                ctx.drawImage(sprite, 100, 180, 60, 60, spriteX, spriteY, 60, 60);
                 console.log(room.walls.north);
             }
             function moveEast(){
-                ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteX +=20;
-                ctx.drawImage(sprite, 100, 120, 60, 55, spriteX, spriteY, 60, 60);
                 console.log(room.walls.east);
             }
             function moveSouth(){
-                ctx.clearRect(spriteX, spriteY, 60, 60);
-                spriteY +=20;
-                ctx.drawImage(sprite, 100, 0, 60, 60, spriteX, spriteY, 60, 60);
                 console.log(room.walls.south);
             }
 
             function drawRoom(room){
                 ctx.fillStyle = 'black';
-
+                ctx.fillRect(100, 100, 500, 400);
+                ctx.fillStyle = 'white';
+                ctx.fillRect(150, 150, 400, 300);
             }
         </script>
     </body>
