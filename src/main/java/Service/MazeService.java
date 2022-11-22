@@ -8,4 +8,8 @@ public class MazeService {
     public static Room getRoom(Maze inUseMaze, int actualRoomid) {
         return MazeDao.getRoom( inUseMaze,actualRoomid);
     }
+
+    public static Room getOpositeRoom(Maze inUseMaze, Room actualRoom) {
+        return MazeDao.getOpositeRoom( inUseMaze, actualRoom);
+    }
 }

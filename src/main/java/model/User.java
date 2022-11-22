@@ -32,4 +32,9 @@ public class User {
     public void setActualRoom(Room actualRoom) {
         this.actualRoom = actualRoom;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

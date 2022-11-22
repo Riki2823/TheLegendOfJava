@@ -28,6 +28,7 @@
         <p>
             Room: ${actualRoom}
         </p>
+        <p>${messageWall}</p>
         <div id=canvaContainer>
             <canvas id="game" width="700" height="700"></canvas>
             <form id="dirForm" method="get" action="/dir">
@@ -107,12 +108,18 @@
                 console.log(room.walls.west);
             }
             function moveNorth(){
+                document.getElementById("dir").value = "n";
+                document.getElementById("dirForm").submit();
                 console.log(room.walls.north);
             }
             function moveEast(){
+                document.getElementById("dir").value = "e";
+                document.getElementById("dirForm").submit();
                 console.log(room.walls.east);
             }
             function moveSouth(){
+                document.getElementById("dir").value = "s";
+                document.getElementById("dirForm").submit();
                 console.log(room.walls.south);
             }
 

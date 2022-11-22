@@ -1,8 +1,12 @@
 package controllers;
 
+import Service.MazeService;
+import Service.TextService;
+import Service.UserService;
 import Utils.SelectMaze;
 import model.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,21 +20,43 @@ public class dirController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+
+        //
         int mapId = (Integer) session.getAttribute("mapId");
         Maze inUseMaze = SelectMaze.createMaze(mapId);
-        int actualRoomId = (Integer) session.getAttribute("actualRoom");
-        Room actualRoom = inUseMaze.getRoom(actualRoomId);
+
+        int userId = (int) session.getAttribute("userId");
+        User u = UserService.getUser(userId);
+
+        Room actualRoom = UserService.getActualRoom(u);
+        req.setAttribute("actualRoom", actualRoom.getId());
 
         String dirS = req.getParameter("dir");
         Room.Dirrection dir = selectDirrection(dirS);
 
         RoomSide rs = actualRoom.getSides().get(dir);
         String side = rs.toString();
-        if (side.equals("Wall")){
-            req.setAttribute("messageWall", "No puedes atravesar una pared!!!!");
-        }else if (side.equals("Door")){
 
+        System.out.println(u);
+
+        if (side.equals("\"Wall\"")){
+            System.out.println("Wall");
+            req.setAttribute("messageWall", "No puedes atravesar una pared!!!!");
+        }else if (side.equals("\"Door\"")){
+            Door door = (Door) rs;
+            if (door.isOpen()){
+                Room r = MazeService.getOpositeRoom(inUseMaze,u.getActualRoom());
+            }
         }
+
+        //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1
+        int actualRoomid = actualRoom.getId();
+        String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid);
+        roomJSONString = roomJSONString.toLowerCase();
+        req.setAttribute("room", roomJSONString);
+
+        RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private Room.Dirrection selectDirrection(String dir) {
@@ -39,6 +65,10 @@ public class dirController extends HttpServlet {
                 return Room.Dirrection.WEST;
             case "e":
                 return Room.Dirrection.EAST;
+            case "n":
+                return Room.Dirrection.NORTH;
+            case "s":
+                return Room.Dirrection.SOUTH;
             default:
                 return null;
         }

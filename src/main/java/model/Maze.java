@@ -18,4 +18,7 @@ public class Maze {
     }
 
 
+    public Room getOpositeRoom(Room actualRoom) {
+
+    }
 }

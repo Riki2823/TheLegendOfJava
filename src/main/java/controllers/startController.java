@@ -38,6 +38,7 @@ public class startController extends HttpServlet {
 
         Maze inUseMaze = SelectMaze.createMaze(mapId);
         int actualRoomid = 1;
+        req.setAttribute("actualRoom", actualRoomid);
         Room actualRoom = MazeService.getRoom( inUseMaze, actualRoomid);
         UserService.setActualRoom(u,actualRoom);
 
@@ -47,7 +48,7 @@ public class startController extends HttpServlet {
 
         System.out.println(roomJSONString);
 
-        session.setAttribute("User", u.getId());
+        session.setAttribute("userId", u.getId());
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);
     }
