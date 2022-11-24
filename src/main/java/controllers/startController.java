@@ -42,7 +42,7 @@ public class startController extends HttpServlet {
         Room actualRoom = MazeService.getRoom( inUseMaze, actualRoomid);
         UserService.setActualRoom(u,actualRoom);
 
-        String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid);
+        String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
 
         req.setAttribute("room", roomJSONString);

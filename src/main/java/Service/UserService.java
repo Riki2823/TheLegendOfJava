@@ -1,7 +1,11 @@
 package Service;
 import DAO.UserDao;
+import model.Coin;
+import model.Item;
 import model.Room;
 import model.User;
+
+import java.util.Map;
 
 public class UserService {
 
@@ -23,5 +27,13 @@ public class UserService {
 
     public static void setActualRoom(User u, Room actualRoom) {
         UserDao.setActualRoom(u, actualRoom);
+    }
+
+    public static void addCoin(User u) {
+        UserDao.addCoin(u);
+    }
+
+    public static Map<String, Item> getItems(User u){
+            return UserDao.getItems(u);
     }
 }

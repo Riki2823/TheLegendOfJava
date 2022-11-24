@@ -28,15 +28,14 @@
         <p>
             Room: ${actualRoom}
         </p>
+        <p id="coinsU"></p>
         <p>${messageWall}</p>
         <div id=canvaContainer>
             <canvas id="game" width="700" height="700"></canvas>
             <form id="dirForm" method="get" action="/dir">
                 <input id="dir" name="dir" type="hidden"></input>
             </form>
-            <form id="coinForm" method="get" action="/getCoin">
-                <input type="hidden" name="coin" id="coin">
-            </form>
+            <form id="coinForm" method="get" action="/getCoin"></form>
         </div>
 
         <script type = "application/json" id="roomData">
@@ -107,7 +106,6 @@
                 if (room.items.coin){
                     if (x >195 && x < 218){
                         if (y > 363 && y < 392){
-                            document.getElementById("coin").value = true;
                             document.getElementById("coinForm").submit();
                         }
                     }
@@ -148,9 +146,16 @@
                 if(room.items.key){
                     drawKey();
                 }
+                userItems(room);
 
             }
-
+            function userItems(room){
+                if(!room.useritems.coin){
+                    document.getElementById("coinsU").innerHTML = "Coins: 0";
+                }else{
+                    document.getElementById("coinsU").innerHTML = "Una o mas monedas";
+                }
+            }
             function drawKey(){
                 let key = new Image();
                 key.src = '/img/key.png';

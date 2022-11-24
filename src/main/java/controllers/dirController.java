@@ -22,7 +22,6 @@ public class dirController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        //
         int mapId = (Integer) session.getAttribute("mapId");
         Maze inUseMaze = SelectMaze.createMaze(mapId);
 
@@ -57,7 +56,7 @@ public class dirController extends HttpServlet {
 
         //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1
         int actualRoomid = actualRoom.getId();
-        String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid);
+        String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
         req.setAttribute("room", roomJSONString);
         System.out.println(roomJSONString);

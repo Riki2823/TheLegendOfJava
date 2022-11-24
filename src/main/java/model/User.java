@@ -1,22 +1,22 @@
 package model;
 
-import com.sun.tools.javac.jvm.Items;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     int id;
     int name;
     Room actualRoom;
-    List<Items> items = new ArrayList<>();
+   Map<String, Item> items = new HashMap<>();
 
-    public List<Items> getItems() {
+    public Map<String, Item> getItems() {
         return items;
     }
 
-    public void addItem(Items item) {
-        this.items.add(item);
+    public void addItem(String itemS, Item item) {
+        this.items.put(itemS, item);
     }
 
     public User(int id) {
