@@ -17,7 +17,9 @@ public class TextService {
         root.put("walls", walls);
 
         JSONObject items = new JSONObject();
-        items.
+        items.putAll(actualRoom.getItems());
+        root.put("items", items);
+
         return root.toJSONString();
 
     }

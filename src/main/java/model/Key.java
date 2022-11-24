@@ -10,4 +10,10 @@ public class Key implements Item {
         this.keyLevel = keyLevel;
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+
+        return "\"key" + this.keyLevel + "\"";
+    }
 }

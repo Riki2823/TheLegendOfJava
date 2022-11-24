@@ -34,6 +34,9 @@
             <form id="dirForm" method="get" action="/dir">
                 <input id="dir" name="dir" type="hidden"></input>
             </form>
+            <form id="coinForm" method="get" action="/getCoin">
+                <input type="hidden" name="coin" id="coin">
+            </form>
         </div>
 
         <script type = "application/json" id="roomData">
@@ -47,6 +50,7 @@
 
             let roomString = document.getElementById("roomData").innerHTML;
             roomString = roomString.replace(";", "");
+            console.log(roomString);
             let room = JSON.parse(roomString);
             drawRoom(room);
 
@@ -99,6 +103,13 @@
                        moveSouth();
                     }
                 }
+
+                if (x >195 && x < 218){
+                    if (y > 363 && y < 392){
+                        document.getElementById("coin").value = true;
+                        document.getElementById("coinForm").submit();
+                    }
+                }
             });
             
             let feet = true;
@@ -128,18 +139,32 @@
                 ctx.fillRect(100, 100, 500, 400);
                 ctx.fillStyle = 'white';
                 ctx.fillRect(150, 150, 400, 300);
-                console.log(room);
+                if (room.items.coin){
+                    drawCoin();
+                }
+                if(room.items.key){
+                    drawKey();
+                }
 
             }
 
+            function drawKey(){
+                let key = new Image();
+                key.src = '/img/key.png';
+
+                key.onload = function() {
+                    ctx.drawImage(key, 450, 350, 50, 50);
+                }
+            }
+
             function drawCoin(){
+                console.log("coin")
+                let coin = new Image();
+                coin.src = '/img/coin.png';
 
-                let rupia = new Image();
-                rupia.src = '/img/rupee.png';
-
-                sprite.onload = function(){
-                    ctx.drawImage(rupia, 100, 0, 60, 60, 300, 300, 60, 60);
-                }                  
+                coin.onload = function() {
+                   ctx.drawImage(coin, 180, 350, 50, 50);
+                };
 
 
             }

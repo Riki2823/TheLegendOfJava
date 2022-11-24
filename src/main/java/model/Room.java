@@ -21,7 +21,7 @@ public class Room {
         EAST
     }
     private Map<Dirrection, RoomSide> sizes = new HashMap<>();
-    private List<Item> items = new ArrayList<>();
+    private Map<String, Item> items = new HashMap<>();
 
 
 
@@ -49,13 +49,13 @@ public class Room {
     public void setSide(Dirrection dir, RoomSide side){
         this.sizes.put(dir,side);
     }
-    public List<Item> getItems() {
+    public Map<String, Item> getItems() {
         return items;
     }
-    public void setItems(List<Item> items) {
+    public void setItems(Map<String, Item> items) {
         this.items = items;
     }
-    public void setItem (Item item){
-        this.items.add(item);
+    public void setItem (Item item, String itemS){
+        this.items.put(itemS,item);
     }
 }

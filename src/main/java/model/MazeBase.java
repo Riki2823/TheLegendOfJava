@@ -59,12 +59,12 @@ public class MazeBase implements MazeBuilder{
     @Override
     public void putKeyInRoom(int nroom, Key key) {
         Room room = maze.getRoom(nroom);
-        room.setItem(key);
+        room.setItem(key, "key");
     }
 
     public void putCoinInRoom(int nroom, Coin coin){
         Room room = maze.getRoom(nroom);
-        room.setItem(coin);
+        room.setItem(coin, "coin");
     }
 
     @Override
