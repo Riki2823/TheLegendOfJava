@@ -103,12 +103,15 @@
                        moveSouth();
                     }
                 }
-
-                if (x >195 && x < 218){
-                    if (y > 363 && y < 392){
-                        document.getElementById("coin").value = true;
-                        document.getElementById("coinForm").submit();
+                
+                if (room.items.coin){
+                    if (x >195 && x < 218){
+                        if (y > 363 && y < 392){
+                            document.getElementById("coin").value = true;
+                            document.getElementById("coinForm").submit();
+                        }
                     }
+                 
                 }
             });
             

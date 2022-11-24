@@ -1,5 +1,6 @@
 package controllers;
 
+import Service.RoomService;
 import Service.UserService;
 import model.Room;
 import model.User;
@@ -22,6 +23,9 @@ public class getCoinController extends HttpServlet {
         User u = UserService.getUser((int) session.getAttribute("userId"));
 
         Room actualRoom = u.getActualRoom();
+        RoomService.deleteCoin(actualRoom);
+
+        UserService.addItem(u);
 
 
 
