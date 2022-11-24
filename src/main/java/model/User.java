@@ -1,9 +1,23 @@
 package model;
 
+import com.sun.tools.javac.jvm.Items;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     int id;
     int name;
     Room actualRoom;
+    List<Items> items = new ArrayList<>();
+
+    public List<Items> getItems() {
+        return items;
+    }
+
+    public void addItem(Items item) {
+        this.items.add(item);
+    }
 
     public User(int id) {
         this.id = id;

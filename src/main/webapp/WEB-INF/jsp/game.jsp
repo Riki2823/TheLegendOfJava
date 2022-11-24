@@ -50,7 +50,6 @@
             let room = JSON.parse(roomString);
             drawRoom(room);
 
-
             let brujula = new Image();
             brujula.src = '/img/brujula.jpg';
 
@@ -58,6 +57,7 @@
                 ctx.drawImage(brujula, 500, 500, 200, 200);
             }
 
+           
             let sprite = new Image();
             sprite.src ='/img/pokemon_sprite.png';
 
@@ -128,6 +128,20 @@
                 ctx.fillRect(100, 100, 500, 400);
                 ctx.fillStyle = 'white';
                 ctx.fillRect(150, 150, 400, 300);
+                console.log(room);
+
+            }
+
+            function drawCoin(){
+
+                let rupia = new Image();
+                rupia.src = '/img/rupee.png';
+
+                sprite.onload = function(){
+                    ctx.drawImage(rupia, 100, 0, 60, 60, 300, 300, 60, 60);
+                }                  
+
+
             }
         </script>
     </body>

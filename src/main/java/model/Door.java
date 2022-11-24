@@ -1,6 +1,8 @@
 package model;
 
 public class Door implements RoomSide{
+    private  Room room2;
+    private Room room1;
     private boolean isOpen;
     private Key key;
     private int level;
@@ -13,6 +15,8 @@ public class Door implements RoomSide{
 
     public Door(boolean isOpen, Room room1, Room room2){
         this.isOpen = isOpen;
+        this.room1 = room1;
+        this.room2 = room2;
     }
 
     public boolean isOpen() {
@@ -42,5 +46,13 @@ public class Door implements RoomSide{
     @Override
     public String toString() {
         return "\"Door\"";
+    }
+
+    public Room getRoom2() {
+        return room2;
+    }
+
+    public Room getRoom1() {
+        return room1;
     }
 }

@@ -16,9 +16,4 @@ public class Maze {
     public Map<Integer, Room> getRooms (){
         return this.rooms;
     }
-
-
-    public Room getOpositeRoom(Room actualRoom) {
-
-    }
 }

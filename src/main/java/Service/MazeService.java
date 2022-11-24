@@ -9,7 +9,4 @@ public class MazeService {
         return MazeDao.getRoom( inUseMaze,actualRoomid);
     }
 
-    public static Room getOpositeRoom(Maze inUseMaze, Room actualRoom) {
-        return MazeDao.getOpositeRoom( inUseMaze, actualRoom);
-    }
 }

@@ -44,9 +44,9 @@ public class startController extends HttpServlet {
 
         String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid);
         roomJSONString = roomJSONString.toLowerCase();
+
         req.setAttribute("room", roomJSONString);
 
-        System.out.println(roomJSONString);
 
         session.setAttribute("userId", u.getId());
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");

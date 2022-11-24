@@ -1,5 +1,6 @@
 package controllers;
 
+import Service.DoorService;
 import Service.MazeService;
 import Service.TextService;
 import Service.UserService;
@@ -45,7 +46,12 @@ public class dirController extends HttpServlet {
         }else if (side.equals("\"Door\"")){
             Door door = (Door) rs;
             if (door.isOpen()){
-                Room r = MazeService.getOpositeRoom(inUseMaze,u.getActualRoom());
+                Room r = DoorService.getOpositeRoom(actualRoom,door);
+                actualRoom = r;
+                req.setAttribute("actualRoom", actualRoom.getId());
+                u.setActualRoom(actualRoom);
+            }else {
+
             }
         }
 
