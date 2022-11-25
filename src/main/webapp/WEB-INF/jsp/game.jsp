@@ -37,6 +37,9 @@
             </form>
             <form id="coinForm" method="get" action="/getCoin"></form>
             <form id="keyForm" method="get" action="/getKey"></form>
+            <form id="openForm" method="get"action="/open">
+                <input id="dirO" name="dir" type="hidden"></input>
+            </form>
 
         </div>
 
@@ -127,23 +130,47 @@
             
             let feet = true;
             function moveWest(){
-                document.getElementById("dir").value = "w";
-                document.getElementById("dirForm").submit();
+                if(room.walls.south == "doorclosed"){
+                    document.getElementById("dirO").value = "w";
+                    document.getElementById("openForm").submit();
+                }else{
+                    document.getElementById("dir").value = "w";
+                    document.getElementById("dirForm").submit();
+                }
+                
                 console.log(room.walls.west);
             }
             function moveNorth(){
-                document.getElementById("dir").value = "n";
-                document.getElementById("dirForm").submit();
+                if(room.walls.north == "doorclosed"){
+                    document.getElementById("dirO").value = "n";
+                    document.getElementById("openForm").submit();
+                }else{
+                    document.getElementById("dir").value = "n";
+                    document.getElementById("dirForm").submit();
+                }
+                
                 console.log(room.walls.north);
             }
             function moveEast(){
-                document.getElementById("dir").value = "e";
-                document.getElementById("dirForm").submit();
+                if(room.walls.east == "doorclosed"){
+                    document.getElementById("dirO").value = "e";
+                    document.getElementById("openForm").submit();
+                }else{
+                    document.getElementById("dir").value = "e";
+                    document.getElementById("dirForm").submit();
+                }
+                
                 console.log(room.walls.east);
             }
             function moveSouth(){
-                document.getElementById("dir").value = "s";
-                document.getElementById("dirForm").submit();
+                if(room.walls.south == "doorclosed"){
+                    document.getElementById("dirO").value = "s";
+                    document.getElementById("openForm").submit();
+                }else{
+                    document.getElementById("dir").value = "s";
+                    document.getElementById("dirForm").submit();
+                }
+                
                 console.log(room.walls.south);
             }
 

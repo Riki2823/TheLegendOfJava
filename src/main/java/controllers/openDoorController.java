@@ -1,10 +1,6 @@
 package controllers;
 
-import Service.DoorService;
-import Service.MazeService;
-import Service.TextService;
-import Service.UserService;
-import Utils.SelectMaze;
+import Service.*;
 import model.*;
 
 import javax.servlet.RequestDispatcher;
@@ -15,15 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
 
-@WebServlet("/nav")
-public class dirController extends HttpServlet {
+@WebServlet("/open")
+public class openDoorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-
-        int userId = (int) session.getAttribute("userId");
-        User u = UserService.getUser(userId);
+        User u = UserService.getUser((int) session.getAttribute("userId"));
 
         req.setAttribute("coinsU", UserService.getnCoins(u));
 
@@ -35,21 +30,32 @@ public class dirController extends HttpServlet {
         String dirS = req.getParameter("dir");
         Room.Dirrection dir = selectDirrection(dirS);
 
-        RoomSide rs = actualRoom.getSides().get(dir);
-        String side = rs.toString();
+        Door door = (Door) actualRoom.getSides().get(dir);
 
-        System.out.println(u);
+        boolean hadKey = false;
+        Key key = null;
+        for (Map.Entry<String, Item> items : u.getItems().entrySet()){
+            if(items.getKey().equals("key")){
+                hadKey = true;
+                key = (Key) items.getValue();
+            }
+        }
+        System.out.println(inUseMaze.getRoom(3));
+        if (hadKey){
+            if (KeyService.getKeyLvl(key) == DoorService.getLvl(door)){
+                actualRoom = DoorService.getOpositeRoom(actualRoom, door);
+                DoorService.setOpenStatus(door, true);
+                u.setActualRoom(actualRoom);
+                req.setAttribute("actualRoom", actualRoom.getId());
+                req.setAttribute("messageWall", "Has conseguido abrir la puerta!!");
 
-        if (side.equals("\"Wall\"")){
-            System.out.println("Wall");
-            req.setAttribute("messageWall", "No puedes atravesar una pared!!!!");
-        }else if (side.equals("\"Door\"")){
-            Door door = (Door) rs;
-            Room r = DoorService.getOpositeRoom(actualRoom, door);
-            actualRoom = r;
-            req.setAttribute("actualRoom", actualRoom.getId());
-            u.setActualRoom(actualRoom);
-
+            }else {
+                req.setAttribute("messageWall", "La llaves que posees no son del nivel necesario");
+                System.out.println("No1");
+            }
+        }else {
+            req.setAttribute("messageWall", "De momento no dispones de llaves para abrir puertas");
+            System.out.println("No2");
         }
 
         //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1
@@ -57,11 +63,10 @@ public class dirController extends HttpServlet {
         String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
         req.setAttribute("room", roomJSONString);
-        System.out.println(roomJSONString);
+
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);
     }
-
     private Room.Dirrection selectDirrection(String dir) {
         switch (dir){
             case "w":

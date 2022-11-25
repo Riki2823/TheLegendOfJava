@@ -15,6 +15,10 @@ public class Key implements Item {
         return price;
     }
 
+    public int getKeyLevel() {
+        return keyLevel;
+    }
+
     @Override
     public String toString() {
 

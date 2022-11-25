@@ -26,4 +26,5 @@ public class Maze {
     public int getId() {
             return this.id;
     }
+
 }

@@ -11,6 +11,8 @@ public class Door implements RoomSide{
         this.isOpen = isOpen;
         this.key = key;
         this.level = level;
+        this.room1 = room1;
+        this.room2 = room2;
     }
 
     public Door(boolean isOpen, Room room1, Room room2){
@@ -45,7 +47,11 @@ public class Door implements RoomSide{
 
     @Override
     public String toString() {
-        return "\"Door\"";
+        if (this.isOpen){
+            return "\"Door\"";
+        }else {
+            return "\"DoorClosed\"";
+        }
     }
 
     public Room getRoom2() {
@@ -55,4 +61,6 @@ public class Door implements RoomSide{
     public Room getRoom1() {
         return room1;
     }
+
+
 }

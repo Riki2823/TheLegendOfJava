@@ -11,4 +11,12 @@ public class DoorService {
         }
         return door.getRoom1();
     }
+
+    public static int getLvl(Door door) {
+        return door.getLevel();
+    }
+
+    public static void setOpenStatus(Door door, boolean b) {
+        door.setOpen(b);
+    }
 }

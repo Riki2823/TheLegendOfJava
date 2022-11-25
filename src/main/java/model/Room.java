@@ -74,4 +74,9 @@ public class Room {
     public int getNumOfCoins() {
         return numOfCoins;
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
