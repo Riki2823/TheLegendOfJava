@@ -1,5 +1,6 @@
 package controllers;
 
+import Service.MazeService;
 import Service.RoomService;
 import Service.TextService;
 import Service.UserService;
@@ -25,12 +26,16 @@ public class getCoinController extends HttpServlet {
         User u = UserService.getUser((int) session.getAttribute("userId"));
 
         int mapId = (Integer) session.getAttribute("mapId");
-        Maze inUseMaze = SelectMaze.createMaze(mapId);
+        Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = u.getActualRoom();
         RoomService.deleteCoin(actualRoom);
 
+        UserService.setActualRoom(u, actualRoom);
+        req.setAttribute("actualRoom", actualRoom.getId());
+
         UserService.addCoin(u);
+
 
         //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1
         int actualRoomid = actualRoom.getId();

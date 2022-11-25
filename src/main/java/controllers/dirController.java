@@ -22,11 +22,11 @@ public class dirController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        int mapId = (Integer) session.getAttribute("mapId");
-        Maze inUseMaze = SelectMaze.createMaze(mapId);
-
         int userId = (int) session.getAttribute("userId");
         User u = UserService.getUser(userId);
+
+        int mapId = (Integer) session.getAttribute("mapId");
+        Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = UserService.getActualRoom(u);
         req.setAttribute("actualRoom", actualRoom.getId());

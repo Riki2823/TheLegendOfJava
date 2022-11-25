@@ -1,15 +1,16 @@
 package Utils;
 
+import Service.MazeService;
 import model.*;
 
 import java.util.stream.IntStream;
 
 public class SelectMaze {
 
-    public static Maze createMaze(int maze){
+    public static Maze createMaze(int maze, User u){
         switch (maze){
             case 1:
-                return Maze1();
+                return Maze1(u);
             case 2:
                 Maze2();
             default:
@@ -22,8 +23,10 @@ public class SelectMaze {
         return null;
     }
 
-    public static Maze Maze1(){
+    public static Maze Maze1(User u){
         MazeBuilder maze = new MazeBase();
+
+        maze.setId();
         IntStream.range(1,5).forEach(maze::buildRoom);
 
         Key lvl1 = new Key(0, 1, 0);
@@ -37,9 +40,11 @@ public class SelectMaze {
 
         maze.putCoinInRoom(1, new Coin());
         maze.putCoinInRoom(3, new Coin());
+        maze.putCoinInRoom(2, new Coin());
+
 
         maze.setTarget(4);
-
+        maze.putMazeOnStart(u);
         return maze.getMaze();
     }
 

@@ -107,6 +107,7 @@
                     if (x >195 && x < 218){
                         if (y > 363 && y < 392){
                             document.getElementById("coinForm").submit();
+                            ctx.clearRect(180, 350, 50, 50);
                         }
                     }
                  

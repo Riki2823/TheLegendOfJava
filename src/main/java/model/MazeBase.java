@@ -1,10 +1,12 @@
 package model;
 
 
+import Service.MazeService;
 
 public class MazeBase implements MazeBuilder{
 
    private Maze maze = new Maze();
+   private int id = 0;
     @Override
     public void buildRoom(int idRoom) {
         Room room = new Room(idRoom);
@@ -70,5 +72,16 @@ public class MazeBase implements MazeBuilder{
     @Override
     public Maze getMaze() {
         return this.maze;
+    }
+
+    @Override
+    public void setId(){
+        maze.setId(this.id);
+        id++;
+    }
+
+    @Override
+    public void putMazeOnStart(User u) {
+        MazeService.startMaze(u, maze);
     }
 }
