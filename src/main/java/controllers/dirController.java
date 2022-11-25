@@ -25,7 +25,9 @@ public class dirController extends HttpServlet {
         int userId = (int) session.getAttribute("userId");
         User u = UserService.getUser(userId);
 
-        int mapId = (Integer) session.getAttribute("mapId");
+        req.setAttribute("coinsU", UserService.getnCoins(u));
+
+
         Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = UserService.getActualRoom(u);

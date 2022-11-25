@@ -38,9 +38,14 @@ public class UserDao {
     public static void addCoin(User u) {
         Item coin = new Coin();
         u.addItem("coin", coin);
+
     }
 
     public static Map<String, Item> getItems(User u) {
         return u.getItems();
+    }
+
+    public static int getnCoins(User u) {
+        return u.getCoins();
     }
 }

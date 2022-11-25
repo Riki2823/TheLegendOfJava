@@ -10,15 +10,21 @@ public class User {
     int name;
     Room actualRoom;
    Map<String, Item> items = new HashMap<>();
+   int coinCounter = 0;
 
     public Map<String, Item> getItems() {
         return items;
     }
 
     public void addItem(String itemS, Item item) {
+        if (itemS.equals("coin")){
+            coinCounter++;
+        }
         this.items.put(itemS, item);
     }
-
+    public int getCoins(){
+        return coinCounter;
+    }
     public User(int id) {
         this.id = id;
     }

@@ -31,6 +31,8 @@ public class startController extends HttpServlet {
         HttpSession session = req.getSession();
         User u  = UserService.addUser();
 
+        req.setAttribute("coinsU", UserService.getnCoins(u));
+
         //Map hace referencia a Maze
         int mapId = Integer.parseInt(req.getParameter("mapId"));
         session.setAttribute("mapId", mapId);

@@ -25,7 +25,6 @@ public class getCoinController extends HttpServlet {
         HttpSession session = req.getSession();
         User u = UserService.getUser((int) session.getAttribute("userId"));
 
-        int mapId = (Integer) session.getAttribute("mapId");
         Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = u.getActualRoom();
@@ -36,6 +35,7 @@ public class getCoinController extends HttpServlet {
 
         UserService.addCoin(u);
 
+        req.setAttribute("coinsU", UserService.getnCoins(u));
 
         //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1
         int actualRoomid = actualRoom.getId();

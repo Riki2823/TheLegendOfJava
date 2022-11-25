@@ -36,4 +36,8 @@ public class UserService {
     public static Map<String, Item> getItems(User u){
             return UserDao.getItems(u);
     }
+
+    public static int getnCoins(User u) {
+        return UserDao.getnCoins(u);
+    }
 }

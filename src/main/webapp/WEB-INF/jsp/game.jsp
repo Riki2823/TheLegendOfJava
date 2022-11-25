@@ -28,7 +28,7 @@
         <p>
             Room: ${actualRoom}
         </p>
-        <p id="coinsU"></p>
+        <p>Coins: ${coinsU}</p>
         <p>${messageWall}</p>
         <div id=canvaContainer>
             <canvas id="game" width="700" height="700"></canvas>
@@ -147,16 +147,10 @@
                 if(room.items.key){
                     drawKey();
                 }
-                userItems(room);
+               
 
             }
-            function userItems(room){
-                if(!room.useritems.coin){
-                    document.getElementById("coinsU").innerHTML = "Coins: 0";
-                }else{
-                    document.getElementById("coinsU").innerHTML = "Una o mas monedas";
-                }
-            }
+            
             function drawKey(){
                 let key = new Image();
                 key.src = '/img/key.png';
