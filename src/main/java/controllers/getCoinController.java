@@ -4,7 +4,6 @@ import Service.MazeService;
 import Service.RoomService;
 import Service.TextService;
 import Service.UserService;
-import Utils.SelectMaze;
 import model.Maze;
 import model.Room;
 import model.User;
@@ -28,13 +27,13 @@ public class getCoinController extends HttpServlet {
         Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = u.getActualRoom();
-        RoomService.deleteCoin(actualRoom);
-
-        UserService.setActualRoom(u, actualRoom);
+        if (RoomService.numOfCoins(actualRoom) != 0){
+            RoomService.removeOneCoin(actualRoom);
+            RoomService.deleteCoin(actualRoom);
+            UserService.setActualRoom(u, actualRoom);
+            UserService.addCoin(u);
+        }
         req.setAttribute("actualRoom", actualRoom.getId());
-
-        UserService.addCoin(u);
-
         req.setAttribute("coinsU", UserService.getnCoins(u));
 
         //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1

@@ -1,9 +1,6 @@
 package model;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Room {
@@ -12,6 +9,10 @@ public class Room {
 
     public Room(int idRoom) {
         this.id = idRoom;
+    }
+
+    public void removeOneCoin() {
+        this.numOfCoins = 0;
     }
 
     public enum Dirrection{
@@ -23,7 +24,7 @@ public class Room {
     private Map<Dirrection, RoomSide> sizes = new HashMap<>();
     private Map<String, Item> items = new HashMap<>();
 
-
+    private int numOfCoins = 0;
 
     public void isTarget(boolean isTarget){
         this.isTarget = isTarget;
@@ -56,6 +57,12 @@ public class Room {
         this.items = items;
     }
     public void setItem (Item item, String itemS){
+        if (itemS.equals("coin")){
+            this.numOfCoins++;
+        }
         this.items.put(itemS,item);
+    }
+    public int getNumOfCoins() {
+        return numOfCoins;
     }
 }
