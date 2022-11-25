@@ -130,7 +130,7 @@
             
             let feet = true;
             function moveWest(){
-                if(room.walls.south == "doorclosed"){
+                if(room.walls.west == "doorclosed"){
                     document.getElementById("dirO").value = "w";
                     document.getElementById("openForm").submit();
                 }else{
@@ -184,6 +184,19 @@
                 }
                 if(room.items.key){
                     drawKey();
+                }
+
+                if(room.walls.north == "door"){
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(310, 100, 60, 60);
+                }
+                if(room.walls.south == "door"){
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(310, 450, 60, 60);
+                }
+                if(room.walls.east == "door"){
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(100, 310, 60, 60);
                 }
                
 

@@ -27,13 +27,18 @@ public class SelectMaze {
         MazeBuilder maze = new MazeBase();
 
         maze.setId();
-        IntStream.range(1,5).forEach(maze::buildRoom);
+        IntStream.range(1,9).forEach(maze::buildRoom);
 
         Key lvl1 = new Key(0, 1, 1);
         Key lvl2 = new Key(1,2, 2);
         maze.buildDoor(1, 2, Room.Dirrection.SOUTH);
         maze.buildDoor(1, 4, Room.Dirrection.EAST, lvl2, 2);
         maze.buildDoor(2,3, Room.Dirrection.EAST, lvl1, 1);
+
+        maze.buildDoor(1, 5, Room.Dirrection.NORTH);
+        maze.buildDoor(5,6, Room.Dirrection.NORTH);
+        maze.buildDoor(5, 7, Room.Dirrection.EAST);
+        maze.buildDoor(5,8, Room.Dirrection.WEST);
 
         maze.putKeyInRoom(2, lvl1);
         maze.putKeyInRoom(3,lvl2);
