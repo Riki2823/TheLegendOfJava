@@ -57,4 +57,8 @@ public class User {
     public String toString() {
         return super.toString();
     }
+
+    public void setCointCounter(int coins){
+        this.coinCounter = coins;
+    }
 }

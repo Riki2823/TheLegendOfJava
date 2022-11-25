@@ -29,7 +29,7 @@ public class SelectMaze {
         maze.setId();
         IntStream.range(1,5).forEach(maze::buildRoom);
 
-        Key lvl1 = new Key(0, 1, 0);
+        Key lvl1 = new Key(0, 1, 1);
         Key lvl2 = new Key(1,2, 2);
         maze.buildDoor(1, 2, Room.Dirrection.SOUTH);
         maze.buildDoor(1, 4, Room.Dirrection.EAST, lvl2, 2);

@@ -1,6 +1,7 @@
 package Service;
 
 import model.Item;
+import model.Key;
 import model.Room;
 
 import java.util.Map;
@@ -16,5 +17,22 @@ public class RoomService {
 
     public static void removeOneCoin(Room actualRoom) {
         actualRoom.removeOneCoin();
+    }
+
+    public static boolean hadKey (Room actualRoom) {
+        Map<String, Item> items = actualRoom.getItems();
+        for (String key : items.keySet()){
+            return key.equals("key");
+        }
+        return false;
+    }
+
+    public static Item getKey(Room actualRoom) {
+        return actualRoom.getKey();
+    }
+
+    public static void deleteKey(Room actualRoom){
+        Map<String, Item> items = actualRoom.getItems();
+        items.remove("key");
     }
 }

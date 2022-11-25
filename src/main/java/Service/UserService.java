@@ -1,9 +1,6 @@
 package Service;
 import DAO.UserDao;
-import model.Coin;
-import model.Item;
-import model.Room;
-import model.User;
+import model.*;
 
 import java.util.Map;
 
@@ -39,5 +36,13 @@ public class UserService {
 
     public static int getnCoins(User u) {
         return UserDao.getnCoins(u);
+    }
+
+    public static void buying(int keyPrice, User u) {
+        UserDao.buy(keyPrice, u);
+    }
+
+    public static void addKey(Key key, User u) {
+        UserDao.addKey(key, u);
     }
 }

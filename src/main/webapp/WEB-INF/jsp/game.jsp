@@ -32,10 +32,12 @@
         <p>${messageWall}</p>
         <div id=canvaContainer>
             <canvas id="game" width="700" height="700"></canvas>
-            <form id="dirForm" method="get" action="/dir">
+            <form id="dirForm" method="get" action="/nav">
                 <input id="dir" name="dir" type="hidden"></input>
             </form>
             <form id="coinForm" method="get" action="/getCoin"></form>
+            <form id="keyForm" method="get" action="/getKey"></form>
+
         </div>
 
         <script type = "application/json" id="roomData">
@@ -111,6 +113,15 @@
                         }
                     }
                  
+                }
+                if (room.items.key){
+                    if(x > 456 && x < 491){
+                        if(y > 354 && y < 398){
+                            document.getElementById("keyForm").submit();
+                            ctx.clearRect(450, 350, 50, 50);
+                        }
+                    }
+                    
                 }
             });
             

@@ -11,6 +11,10 @@ public class Key implements Item {
         this.price = price;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
 

@@ -1,9 +1,6 @@
 package DAO;
 
-import model.Coin;
-import model.Item;
-import model.Room;
-import model.User;
+import model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +44,15 @@ public class UserDao {
 
     public static int getnCoins(User u) {
         return u.getCoins();
+    }
+
+    public static void buy(int keyPrice, User u) {
+        int coins = u.getCoins() - keyPrice;
+        u.setCointCounter(coins);
+
+    }
+
+    public static void addKey(Key key, User u) {
+        u.addItem("key", key);
     }
 }

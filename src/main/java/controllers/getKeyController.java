@@ -1,9 +1,7 @@
 package controllers;
 
-import Service.MazeService;
-import Service.RoomService;
-import Service.TextService;
-import Service.UserService;
+import Service.*;
+import model.Key;
 import model.Maze;
 import model.Room;
 import model.User;
@@ -17,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/getCoin")
-public class getCoinController extends HttpServlet {
+@WebServlet("/getKey")
+public class getKeyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -27,14 +25,18 @@ public class getCoinController extends HttpServlet {
         Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = u.getActualRoom();
-        if (RoomService.numOfCoins(actualRoom) != 0){
-            RoomService.removeOneCoin(actualRoom);
-            RoomService.deleteCoin(actualRoom);
-            UserService.setActualRoom(u, actualRoom);
-            UserService.addCoin(u);
-            req.setAttribute("messageWall", "Acabas de obtener una moneda!!");
+        if (RoomService.hadKey(actualRoom)){
+            Key key = (Key) RoomService.getKey(actualRoom);
+            if (UserService.getnCoins(u) >= KeyService.getKeyPrice(key)){
+                UserService.buying(KeyService.getKeyPrice(key), u);
+                UserService.addKey(key, u);
+                RoomService.deleteKey(actualRoom);
 
+            }else {
+                req.setAttribute("messageWall", "No tienes suficiente dinero para comprar esa llave");
+            }
         }
+
         req.setAttribute("actualRoom", actualRoom.getId());
         req.setAttribute("coinsU", UserService.getnCoins(u));
 
@@ -43,7 +45,6 @@ public class getCoinController extends HttpServlet {
         String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
         req.setAttribute("room", roomJSONString);
-
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);
     }

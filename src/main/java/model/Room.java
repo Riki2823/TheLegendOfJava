@@ -15,6 +15,15 @@ public class Room {
         this.numOfCoins = 0;
     }
 
+    public Item getKey() {
+        for (Map.Entry<String,Item> entry : this.items.entrySet()){
+               if (entry.getKey().equals("key")){
+                   return entry.getValue();
+            }
+        }
+        return null;
+    }
+
     public enum Dirrection{
         NORTH,
         SOUTH,
