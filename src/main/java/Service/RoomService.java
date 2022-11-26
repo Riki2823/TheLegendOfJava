@@ -35,4 +35,8 @@ public class RoomService {
         Map<String, Item> items = actualRoom.getItems();
         items.remove("key");
     }
+
+    public static boolean isTarget(Room actualRoom) {
+        return actualRoom.getIsTarget();
+    }
 }

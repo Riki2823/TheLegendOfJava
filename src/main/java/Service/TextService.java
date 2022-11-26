@@ -25,7 +25,10 @@ public class TextService {
         userItems.putAll(UserService.getItems(u));
         root.put("userItems", userItems);
 
+
         return root.toJSONString();
 
     }
+
+
 }

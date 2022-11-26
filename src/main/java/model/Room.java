@@ -24,6 +24,10 @@ public class Room {
         return null;
     }
 
+    public boolean getIsTarget() {
+        return isTarget;
+    }
+
     public enum Dirrection{
         NORTH,
         SOUTH,

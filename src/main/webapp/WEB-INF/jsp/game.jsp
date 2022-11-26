@@ -23,31 +23,35 @@
         </style>
     </head>
     <body>
-        <h1>Bienvenido al Mapa ${mapId}</h1>
-
-        <p>
-            Room: ${actualRoom}
-        </p>
-        <p>Coins: ${coinsU}</p>
-        <p>${messageWall}</p>
-        <div id=canvaContainer>
-            <canvas id="game" width="700" height="700"></canvas>
-            <form id="dirForm" method="get" action="/nav">
-                <input id="dir" name="dir" type="hidden"></input>
-            </form>
-            <form id="coinForm" method="get" action="/getCoin"></form>
-            <form id="keyForm" method="get" action="/getKey"></form>
-            <form id="openForm" method="get"action="/open">
-                <input id="dirO" name="dir" type="hidden"></input>
-            </form>
-
-        </div>
-
+        <header>
+            <h1>Bienvenido al Mapa ${mapId}</h1>
+            <p>
+                Room: ${actualRoom}
+            </p>
+            <p>Coins: ${coinsU}</p>
+            <p>${messageWall}</p>
+        </header>
+        
+        <main>
+            <div id=canvaContainer>
+                <canvas id="game" width="700" height="700"></canvas>
+                <form id="dirForm" method="get" action="/nav">
+                    <input id="dir" name="dir" type="hidden"></input>
+                </form>
+                <form id="coinForm" method="get" action="/getCoin"></form>
+                <form id="keyForm" method="get" action="/getKey"></form>
+                <form id="openForm" method="get"action="/open">
+                    <input id="dirO" name="dir" type="hidden"></input>
+                </form>   
+            </div>
+    
+        </main>
         <script type = "application/json" id="roomData">
             ${room}
         </script>
 
         <script>
+
             let canvas = document.getElementById('game');
             let ctx = canvas.getContext('2d');
 
@@ -74,6 +78,19 @@
             }
             let spriteX = 300;
             let spriteY = 300;
+
+            if("${winner}" == "true"){
+                let win = new Image;
+                win.src = '/img/win.png';
+
+                win.onload = function(){
+                    ctx.drawImage(win, 200, 100, 300, 300);
+                }
+                
+                setTimeout(() => {
+                    document.getElementById("winForm").submit();
+                })
+            }
 
             canvas.addEventListener("click", (event) => {
             
@@ -128,7 +145,7 @@
                 }
             });
             
-            let feet = true;
+            
             function moveWest(){
                 if(room.walls.west == "doorclosed"){
                     document.getElementById("dirO").value = "w";
@@ -194,9 +211,31 @@
                     ctx.fillStyle = 'white';
                     ctx.fillRect(310, 450, 60, 60);
                 }
-                if(room.walls.east == "door"){
+                if(room.walls.west == "door"){
                     ctx.fillStyle = 'white';
                     ctx.fillRect(100, 310, 60, 60);
+                }
+                if(room.walls.east == "door"){
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(550, 310, 60, 60);
+                }
+
+
+                if(room.walls.north == "doorclosed"){
+                    ctx.fillStyle = 'red';
+                    ctx.fillRect(310, 100, 50, 60);
+                }
+                if(room.walls.south == "doorclosed"){
+                    ctx.fillStyle = 'red';
+                    ctx.fillRect(310, 450, 50, 60);
+                }
+                if(room.walls.west == "doorclosed"){
+                    ctx.fillStyle = 'red';
+                    ctx.fillRect(100, 310, 50, 60);
+                }
+                if(room.walls.east == "doorclosed"){
+                    ctx.fillStyle = 'red';
+                    ctx.fillRect(550, 310, 50, 60);
                 }
                
 

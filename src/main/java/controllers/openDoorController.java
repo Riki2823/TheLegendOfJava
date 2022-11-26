@@ -40,7 +40,7 @@ public class openDoorController extends HttpServlet {
                 key = (Key) items.getValue();
             }
         }
-        System.out.println(inUseMaze.getRoom(3));
+
         if (hadKey){
             if (KeyService.getKeyLvl(key) == DoorService.getLvl(door)){
                 actualRoom = DoorService.getOpositeRoom(actualRoom, door);
@@ -48,7 +48,9 @@ public class openDoorController extends HttpServlet {
                 u.setActualRoom(actualRoom);
                 req.setAttribute("actualRoom", actualRoom.getId());
                 req.setAttribute("messageWall", "Has conseguido abrir la puerta!!");
-
+                if (RoomService.isTarget(actualRoom)){
+                        req.setAttribute("winner", true);
+                }
             }else {
                 req.setAttribute("messageWall", "La llaves que posees no son del nivel necesario");
                 System.out.println("No1");
