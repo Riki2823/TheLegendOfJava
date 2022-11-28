@@ -19,6 +19,9 @@
                 margin: 5%;
             }
 
+            #userName{
+
+            }
 
         </style>
     </head>
@@ -42,6 +45,8 @@
                 <form id="keyForm" method="get" action="/getKey"></form>
                 <form id="openForm" method="get"action="/open">
                     <input id="dirO" name="dir" type="hidden"></input>
+                </form>
+                <form action="/endform" method="get" id="winForm">
                 </form>   
             </div>
     
@@ -51,7 +56,6 @@
         </script>
 
         <script>
-
             let canvas = document.getElementById('game');
             let ctx = canvas.getContext('2d');
 
@@ -88,8 +92,8 @@
                 }
                 
                 setTimeout(() => {
-                    document.getElementById("winForm").submit();
-                })
+                    document.getElementById("winForm").submit();            
+                }, 3000)
             }
 
             canvas.addEventListener("click", (event) => {
