@@ -55,4 +55,8 @@ public class UserDao {
     public static void addKey(Key key, User u) {
         u.addItem("key", key);
     }
+
+    public static String getName(User user) {
+        return user.getName();
+    }
 }

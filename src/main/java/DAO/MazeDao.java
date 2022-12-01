@@ -23,4 +23,8 @@ public class MazeDao {
     public static Maze getMazeInGame(User u) {
         return mazesInGame.get(u);
     }
+
+    public static String getName(Maze mazeInGame) {
+        return mazeInGame.getName();
+    }
 }

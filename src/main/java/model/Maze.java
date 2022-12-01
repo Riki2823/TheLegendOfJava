@@ -6,7 +6,7 @@ import java.util.Map;
 public class Maze {
     private Map<Integer, Room> rooms = new HashMap<>();
     private int id;
-
+    private String mazeName;
     public void addRoom(int nroom, Room room) {
         this.rooms.put(nroom, room);
     }
@@ -27,4 +27,11 @@ public class Maze {
             return this.id;
     }
 
+    public void setMazeName(String mazeName) {
+        this.mazeName = mazeName;
+    }
+
+    public String getName() {
+        return mazeName;
+    }
 }

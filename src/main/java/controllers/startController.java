@@ -33,14 +33,15 @@ public class startController extends HttpServlet {
 
         req.setAttribute("coinsU", UserService.getnCoins(u));
 
-        //Map hace referencia a Maze
         int mapId = Integer.parseInt(req.getParameter("mapId"));
         session.setAttribute("mapId", mapId);
         req.setAttribute("mapId", mapId);
 
+
         Maze inUseMaze = SelectMaze.createMaze(mapId, u);
         int actualRoomid = 1;
         req.setAttribute("actualRoom", actualRoomid);
+
         Room actualRoom = MazeService.getRoom( inUseMaze, actualRoomid);
         UserService.setActualRoom(u,actualRoom);
 

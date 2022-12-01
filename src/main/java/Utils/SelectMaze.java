@@ -12,14 +12,14 @@ public class SelectMaze {
             case 1:
                 return Maze1(u);
             case 2:
-                Maze2();
+                return Maze2(u);
             default:
                 return null;
         }
 
     }
 
-    private static Maze Maze2() {
+    private static Maze Maze2(User u) {
         return null;
     }
 
@@ -38,7 +38,7 @@ public class SelectMaze {
 
         maze.putKeyInRoom(2, lvl1);
         maze.putKeyInRoom(3,lvl2);
-
+        maze.setName("Tutorial");
         maze.putCoinInRoom(1, new Coin());
         maze.putCoinInRoom(3, new Coin());
         maze.putCoinInRoom(2, new Coin());

@@ -1,10 +1,14 @@
 package Service;
 import DAO.UserDao;
+import DAO.WinnerDAO;
+import DAO.WinnerDAOimpl;
 import model.*;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 public class UserService {
+    private static WinnerDAO winnerDAO = new WinnerDAOimpl();
 
     private static int id = 0;
     public static User addUser(){
@@ -44,5 +48,13 @@ public class UserService {
 
     public static void addKey(Key key, User u) {
         UserDao.addKey(key, u);
+    }
+
+    public static String getName(User user) {
+        return UserDao.getName(user);
+    }
+
+    public void insertMysql(User u) throws SQLException {
+        winnerDAO.newWinner(u);
     }
 }

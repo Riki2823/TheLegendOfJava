@@ -13,7 +13,7 @@
         <form class="button" action="/start" method="post">
             <select id="mapId" name="mapId">
                 <option value="1">Tutorial</option>
-                <option value="2">Ya veremos</option>
+                <option value="2">La cueva de los kesse</option>
             </select>
             <input  type="submit" value="Empezar"></input>
         </form>

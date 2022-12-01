@@ -10,4 +10,6 @@ public interface MazeBuilder {
     Maze getMaze();
     void setId();
     void putMazeOnStart(User u);
+
+    void setName(String tutorial);
 }

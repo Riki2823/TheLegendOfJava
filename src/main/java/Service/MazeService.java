@@ -20,4 +20,9 @@ public class MazeService {
     public static void startMaze(User u, Maze mazeInGame){
         MazeDao.startMaze(u, mazeInGame);
     }
+
+    public static String getName(Maze mazeInGame) {
+        return MazeDao.getName(mazeInGame);
+
+    }
 }

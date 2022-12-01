@@ -84,4 +84,9 @@ public class MazeBase implements MazeBuilder{
     public void putMazeOnStart(User u) {
         MazeService.startMaze(u, maze);
     }
+
+    @Override
+    public void setName(String name) {
+        maze.setMazeName(name);
+    }
 }

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class User {
     int id;
-    int name;
+    String name;
     Room actualRoom;
    Map<String, Item> items = new HashMap<>();
    int coinCounter = 0;
@@ -37,11 +37,11 @@ public class User {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
