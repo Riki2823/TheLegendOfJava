@@ -6,37 +6,17 @@
 <html>
     <head>
         <title>TheLegendOfJava</title>
-    
-        <style>
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-
-            canvas{
-                border: 3px solid black;
-                margin: 5%;
-            }
-
-            #userName{
-
-            }
-
-        </style>
+        <link rel="stylesheet" href="../../styles/game.css">
     </head>
     <body>
-        <header>
-            <h1>Bienvenido al Mapa ${mapId}</h1>
-            <p>
-                Room: ${actualRoom}
-            </p>
-            <p>Coins: ${coinsU}</p>
-            <p>${messageWall}</p>
-        </header>
-        
         <main>
+            
             <div id=canvaContainer>
+
+                <p id="title">Bienvenido al Mapa ${mapId}<p>
+                <p>Room: ${actualRoom}</p>
+                <p>Coins: ${coinsU}</p>
+                <p>${messageWall}</p>
                 <canvas id="game" width="700" height="700"></canvas>
                 <form id="dirForm" method="get" action="/nav">
                     <input id="dir" name="dir" type="hidden"></input>
@@ -46,8 +26,8 @@
                 <form id="openForm" method="get"action="/open">
                     <input id="dirO" name="dir" type="hidden"></input>
                 </form>
-                <form action="/endform" method="get" id="winForm">
-                </form>   
+                <form action="/endform" method="get" id="winForm"></form>
+                <button>Reset Game</button>   
             </div>
     
         </main>
@@ -196,9 +176,9 @@
             }
 
             function drawRoom(room){
-                ctx.fillStyle = 'black';
-                ctx.fillRect(100, 100, 500, 400);
                 ctx.fillStyle = 'white';
+                ctx.fillRect(100, 100, 500, 400);
+                ctx.fillStyle = 'black';
                 ctx.fillRect(150, 150, 400, 300);
                 if (room.items.coin){
                     drawCoin();
@@ -208,19 +188,19 @@
                 }
 
                 if(room.walls.north == "door"){
-                    ctx.fillStyle = 'white';
+                    ctx.fillStyle = 'black';
                     ctx.fillRect(310, 100, 60, 60);
                 }
                 if(room.walls.south == "door"){
-                    ctx.fillStyle = 'white';
+                    ctx.fillStyle = 'black';
                     ctx.fillRect(310, 450, 60, 60);
                 }
                 if(room.walls.west == "door"){
-                    ctx.fillStyle = 'white';
+                    ctx.fillStyle = 'black';
                     ctx.fillRect(100, 310, 60, 60);
                 }
                 if(room.walls.east == "door"){
-                    ctx.fillStyle = 'white';
+                    ctx.fillStyle = 'black';
                     ctx.fillRect(550, 310, 60, 60);
                 }
 
