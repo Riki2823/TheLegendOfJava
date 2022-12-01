@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.liceu.maze</groupId>
-  <artifactId>MazeGame</artifactId>
+  <groupId>villanueva.ricardo</groupId>
+  <artifactId>TheLegendOfJava</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>MazeGame - Segunda practica obligatoria</name>
@@ -85,14 +85,14 @@
               <containerId>tomcat7x</containerId>
               <type>installed</type>
               <!--<home>/home/ricardo/Escritorio/Docker/TomcatplusSql/</home>-->
-              <!--<home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>-->
-              <home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>
+              <home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>
+              <!--<home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>-->
             </container>
             <configuration>
               <type>existing</type>
               <!--<home>/home/ricardo/Escritorio/Docker/TomcatplusSql/</home>-->
-              <!--<home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>-->
-              <home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>
+              <home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>
+              <!--<home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>-->
             </configuration>
           </configuration>
         </plugin>
