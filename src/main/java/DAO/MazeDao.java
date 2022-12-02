@@ -27,4 +27,8 @@ public class MazeDao {
     public static String getName(Maze mazeInGame) {
         return mazeInGame.getName();
     }
+
+    public static void removeMaze(User u) {
+        mazesInGame.remove(u);
+    }
 }

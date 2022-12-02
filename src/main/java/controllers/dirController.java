@@ -25,12 +25,8 @@ public class dirController extends HttpServlet {
         int userId = (int) session.getAttribute("userId");
         User u = UserService.getUser(userId);
 
-        req.setAttribute("coinsU", UserService.getnCoins(u));
-
         Maze inUseMaze = MazeService.getMazeInGame(u);
-
         Room actualRoom = UserService.getActualRoom(u);
-        req.setAttribute("actualRoom", actualRoom.getId());
 
         String dirS = req.getParameter("dir");
         Room.Dirrection dir = selectDirrection(dirS);
@@ -38,7 +34,8 @@ public class dirController extends HttpServlet {
         RoomSide rs = actualRoom.getSides().get(dir);
         String side = rs.toString();
 
-        System.out.println(u);
+        req.setAttribute("coinsU", UserService.getnCoins(u));
+        req.setAttribute("actualRoom", actualRoom.getId());
 
         if (side.equals("\"Wall\"")){
             System.out.println("Wall");
@@ -57,7 +54,6 @@ public class dirController extends HttpServlet {
         String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
         req.setAttribute("room", roomJSONString);
-        System.out.println(roomJSONString);
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);
     }

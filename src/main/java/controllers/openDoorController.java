@@ -20,11 +20,11 @@ public class openDoorController extends HttpServlet {
         HttpSession session = req.getSession();
         User u = UserService.getUser((int) session.getAttribute("userId"));
 
-        req.setAttribute("coinsU", UserService.getnCoins(u));
-
         Maze inUseMaze = MazeService.getMazeInGame(u);
 
         Room actualRoom = UserService.getActualRoom(u);
+
+        req.setAttribute("coinsU", UserService.getnCoins(u));
         req.setAttribute("actualRoom", actualRoom.getId());
 
         String dirS = req.getParameter("dir");

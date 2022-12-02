@@ -9,8 +9,10 @@ public class User {
     int id;
     String name;
     Room actualRoom;
-   Map<String, Item> items = new HashMap<>();
-   int coinCounter = 0;
+    Map<String, Item> items = new HashMap<>();
+    int coinCounter = 0;
+    private String mapUsed;
+    private String elapsTime;
 
     public Map<String, Item> getItems() {
         return items;
@@ -60,5 +62,13 @@ public class User {
 
     public void setCointCounter(int coins){
         this.coinCounter = coins;
+    }
+
+    public void setMapUsed(String map_name) {
+        this.mapUsed = map_name;
+    }
+
+    public void setElapsTime(String elapsed_time) {
+        this.elapsTime = elapsed_time;
     }
 }

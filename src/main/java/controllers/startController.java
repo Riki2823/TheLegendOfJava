@@ -31,27 +31,25 @@ public class startController extends HttpServlet {
         HttpSession session = req.getSession();
         User u  = UserService.addUser();
 
-        req.setAttribute("coinsU", UserService.getnCoins(u));
-
         int mapId = Integer.parseInt(req.getParameter("mapId"));
-        session.setAttribute("mapId", mapId);
-        req.setAttribute("mapId", mapId);
-
+        int actualRoomid = 1;
 
         Maze inUseMaze = SelectMaze.createMaze(mapId, u);
-        int actualRoomid = 1;
-        req.setAttribute("actualRoom", actualRoomid);
-
         Room actualRoom = MazeService.getRoom( inUseMaze, actualRoomid);
-        UserService.setActualRoom(u,actualRoom);
 
+        UserService.setActualRoom(u,actualRoom);
         String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
 
+        req.setAttribute("coinsU", UserService.getnCoins(u));
+        req.setAttribute("mapId", mapId);
+        req.setAttribute("actualRoom", actualRoomid);
         req.setAttribute("room", roomJSONString);
 
-
+        session.setAttribute("mapId", mapId);
         session.setAttribute("userId", u.getId());
+
+
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);
     }

@@ -59,4 +59,18 @@ public class UserDao {
     public static String getName(User user) {
         return user.getName();
     }
+
+    public static void removeUser(int userId) {
+        int index = -1;
+        for (User u: users){
+            if (u.getId() == userId){
+                index = users.indexOf(u);
+            }
+        }
+        if (index != -1){
+            users.remove(index);
+        }
+
+        System.out.println(users);
+    }
 }

@@ -5,6 +5,7 @@ import DAO.WinnerDAOimpl;
 import model.*;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 public class UserService {
@@ -52,6 +53,14 @@ public class UserService {
 
     public static String getName(User user) {
         return UserDao.getName(user);
+    }
+
+    public static void removeUser(int userId) {
+        UserDao.removeUser(userId);
+    }
+
+    public static List<User> getWinners() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+        return winnerDAO.listOfWinners();
     }
 
     public void insertMysql(User u) throws SQLException {

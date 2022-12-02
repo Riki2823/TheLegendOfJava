@@ -25,4 +25,8 @@ public class MazeService {
         return MazeDao.getName(mazeInGame);
 
     }
+
+    public static void removeMaze(User u) {
+        MazeDao.removeMaze(u);
+    }
 }
