@@ -6,14 +6,17 @@
 <html>
     <head>
         <title>TheLegendOfJava</title>
+        <link rel="stylesheet" href="../../styles/winnerForm.css">
     </head>
     <body>
-        <h1>Enorabuea has superado la Mazmorra</h1>
-        <h2>Introduce tus iniciales!!!</h2>
-        <form action="/endform" method="post">
-            <input type="text" name="name" id="name"></input>
-            <input type="submit" value="Guardar Partida"></input>
-        </form>
+        <div>
+            <h1>Enorabuea has superado la Mazmorra</h1>
+            <h2>Introduce tu nombre!!!</h2>
+            <form action="/endform" method="post">
+                <input type="text" name="name" id="name" id="inicials"></input>
+                <input type="submit" value="Guardar Partida" id="envia"></input>
+            </form>
+        </div>
 
     </body>
 </html>

@@ -5,7 +5,7 @@
   <artifactId>TheLegendOfJava</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>MazeGame - Segunda practica obligatoria</name>
+  <name>TheLegendOfJava</name>
   <url>http://maven.apache.org</url>
   <properties>
     <maven.compiler.source>1.9</maven.compiler.source>

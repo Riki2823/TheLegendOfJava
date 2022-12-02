@@ -1,6 +1,5 @@
 package Utils;
 
-import Service.MazeService;
 import model.*;
 
 import java.util.stream.IntStream;

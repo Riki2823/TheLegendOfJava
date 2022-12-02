@@ -5,9 +5,6 @@ import model.Room;
 import model.User;
 import org.json.simple.JSONObject;
 
-import java.util.Map;
-import java.util.stream.Collectors;
-
 public class TextService {
     public static String getJsonInfo(Maze maze, int room, User u){
         JSONObject root = new JSONObject();

@@ -38,7 +38,7 @@ p{
     margin-bottom: 2%;
 }
 
-button{
+#resetButton{
     height: 50px;
     width: 250px;
     border-radius: 50px;
@@ -46,6 +46,6 @@ button{
     margin: 5%;
 }
 
-button:hover{
+#resetButton:hover{
     background-color: #D363A0;
 }

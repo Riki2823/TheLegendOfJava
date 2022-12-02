@@ -27,7 +27,10 @@
                     <input id="dirO" name="dir" type="hidden"></input>
                 </form>
                 <form action="/endform" method="get" id="winForm"></form>
-                <button>Reset Game</button>   
+                <form action="/reset" method="get" id="reset">
+                     <input type="submit" value="Reset Game" id="resetButton"></input>
+                </form>
+
             </div>
     
         </main>
@@ -38,7 +41,6 @@
         <script>
             let canvas = document.getElementById('game');
             let ctx = canvas.getContext('2d');
-
 
             let roomString = document.getElementById("roomData").innerHTML;
             roomString = roomString.replace(";", "");

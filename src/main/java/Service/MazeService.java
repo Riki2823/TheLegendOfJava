@@ -1,12 +1,11 @@
 package Service;
 
 import DAO.MazeDao;
-import DAO.UserDao;
 import model.Maze;
 import model.Room;
 import model.User;
 
-import java.util.Map;
+
 
 public class MazeService {
     public static Room getRoom(Maze inUseMaze, int actualRoomid) {
