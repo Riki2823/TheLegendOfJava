@@ -71,4 +71,12 @@ public class User {
     public void setElapsTime(String elapsed_time) {
         this.elapsTime = elapsed_time;
     }
+
+    public String getMapUsed() {
+        return mapUsed;
+    }
+
+    public String getElapsTime() {
+        return elapsTime;
+    }
 }

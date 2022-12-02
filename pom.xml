@@ -85,15 +85,15 @@
               <containerId>tomcat7x</containerId>
               <type>installed</type>
               <!--<home>/home/ricardo/Escritorio/Docker/TomcatplusSql/</home>-->
-              <!--<home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>-->
-              <home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>
-            </container>
-            <configuration>
-              <type>existing</type>
-              <!--<home>/home/ricardo/Escritorio/Docker/TomcatplusSql/</home>-->
-              <!--<home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>-->
-              <home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>
-            </configuration>
+              <home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>
+            <!--<home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>-->
+          </container>
+          <configuration>
+            <type>existing</type>
+            <!--<home>/home/ricardo/Escritorio/Docker/TomcatplusSql/</home>-->
+            <home>C:\Users\Ricardo\Desktop\Docker\TommcatPluSql</home>
+            <!--<home>C:\Users\ricar\Desktop\Docker\TommcatSql</home>-->
+          </configuration>
           </configuration>
         </plugin>
       </plugins>

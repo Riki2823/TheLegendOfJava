@@ -37,7 +37,7 @@ public class winnerTabController extends HttpServlet {
 
         req.setAttribute("winners", winners);
 
-        RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
+        RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/winnerTab.jsp");
         dispatcher.forward(req, resp);
     }
 }
