@@ -19,7 +19,7 @@ public class WinnerDAOimpl implements WinnerDAO{
             PreparedStatement statement = connection.prepareStatement(insert);
             statement.setString(1, UserService.getName(user));
             statement.setString(2, MazeService.getName(MazeService.getMazeInGame(user)));
-            statement.setString(3, "0");
+            statement.setString(3, UserService.getElapseTime(user));
             statement.execute();
         }catch (SQLException e){
             throw new RuntimeException(e);

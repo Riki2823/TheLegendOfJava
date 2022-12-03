@@ -27,6 +27,8 @@ public class winnerTabController extends HttpServlet {
         UserService.removeUser(u.getId());
         session.removeAttribute("userId");
         session.removeAttribute("mapId");
+        session.removeAttribute("startTime");
+
 
         List<User> winners = null;
         try {

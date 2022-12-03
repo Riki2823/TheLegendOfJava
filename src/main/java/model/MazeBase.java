@@ -15,7 +15,6 @@ public class MazeBase implements MazeBuilder{
         room.setSide(Room.Dirrection.EAST, new Wall());
         room.setSide(Room.Dirrection.WEST, new Wall());
         maze.addRoom(idRoom, room);
-        System.out.println(room.getId());
     }
 
     @Override

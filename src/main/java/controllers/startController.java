@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.Instant;
 
 @WebServlet("/start")
 public class startController extends HttpServlet {
@@ -28,6 +29,9 @@ public class startController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Instant playerStartTime = Instant.now();
+
+
         HttpSession session = req.getSession();
         User u  = UserService.addUser();
 
@@ -51,7 +55,7 @@ public class startController extends HttpServlet {
 
         session.setAttribute("mapId", mapId);
         session.setAttribute("userId", u.getId());
-
+        session.setAttribute("startTime", playerStartTime);
 
         RequestDispatcher dispatcher =  req.getRequestDispatcher("/WEB-INF/jsp/game.jsp");
         dispatcher.forward(req, resp);

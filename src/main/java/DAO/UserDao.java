@@ -1,7 +1,6 @@
 package DAO;
 
 import Service.KeyService;
-import Service.RoomService;
 import model.*;
 
 import java.util.ArrayList;
@@ -72,8 +71,6 @@ public class UserDao {
         if (index != -1){
             users.remove(index);
         }
-
-        System.out.println(users);
     }
 
     public static void deleteItems(User u) {
@@ -86,5 +83,13 @@ public class UserDao {
             return "";
         }
         return KeyService.getKeyName(items.get("key"));
+    }
+
+    public static void setElapseTime(String elapseTime, User u) {
+        u.setElapsTime(elapseTime);
+    }
+
+    public static String getElapseTime(User user) {
+        return user.getElapsTime();
     }
 }

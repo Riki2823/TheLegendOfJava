@@ -41,7 +41,6 @@ public class dirController extends HttpServlet {
         req.setAttribute("actualRoom", actualRoom.getId());
 
         if (side.equals("\"Wall\"")){
-            System.out.println("Wall");
             req.setAttribute("messageWall", "No puedes atravesar una pared!!!!");
         }else if (side.equals("\"Door\"")){
             Door door = (Door) rs;

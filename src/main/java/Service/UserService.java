@@ -71,6 +71,14 @@ public class UserService {
         return UserDao.getKeyName(u);
     }
 
+    public static void setElapseTime(String elapseTime, User u) {
+        UserDao.setElapseTime(elapseTime, u);
+    }
+
+    public static String getElapseTime(User user) {
+        return UserDao.getElapseTime(user);
+    }
+
     public void insertMysql(User u) throws SQLException {
         winnerDAO.newWinner(u);
     }

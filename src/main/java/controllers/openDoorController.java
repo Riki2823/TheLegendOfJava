@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Map;
 
 @WebServlet("/open")
@@ -55,14 +56,15 @@ public class openDoorController extends HttpServlet {
                 req.setAttribute("messageWall", "Has conseguido abrir la puerta!!");
                 if (RoomService.isTarget(actualRoom)){
                         req.setAttribute("winner", true);
+                        Instant playerEndTime = Instant.now();
+
+                        session.setAttribute("playerEndTime", playerEndTime);
                 }
             }else {
                 req.setAttribute("messageWall", "La llaves que posees no son del nivel necesario");
-                System.out.println("No1");
             }
         }else {
             req.setAttribute("messageWall", "De momento no dispones de llaves para abrir puertas");
-            System.out.println("No2");
         }
 
         //!!!!!!!!!IMPORTANTE IMPLEMENTAR DAO!!!!!!!!!!!!!!!!1

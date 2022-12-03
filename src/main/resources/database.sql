@@ -13,7 +13,7 @@ CREATE TABLE winner(
 );
 
 INSERT INTO winner (name, map_name, elapsed_time) VALUES
-('Pere', "Tutorial", "00:15:24"),
-('Artem', "La cueva de los kesse", "00:15:24"),
-('Manu', "La cueva de los kesse", "00:15:24"),
-('Santi', "Bosque Kokori", "00:15:24");
+('Pere', "Tutorial", "00:14:24"),
+('Artem', "La cueva de los kesse", "00:14:00"),
+('Manu', "La cueva de los kesse", "00:5:24"),
+('Santi', "Bosque Kokori", "00:1:24");
