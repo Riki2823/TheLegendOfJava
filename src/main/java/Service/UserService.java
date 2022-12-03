@@ -67,6 +67,10 @@ public class UserService {
         UserDao.deleteItems(u);
     }
 
+    public static String  getKeyName(User u) {
+        return UserDao.getKeyName(u);
+    }
+
     public void insertMysql(User u) throws SQLException {
         winnerDAO.newWinner(u);
     }

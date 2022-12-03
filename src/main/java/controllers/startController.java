@@ -41,8 +41,11 @@ public class startController extends HttpServlet {
         String roomJSONString = TextService.getJsonInfo(inUseMaze, actualRoomid, u);
         roomJSONString = roomJSONString.toLowerCase();
 
+        String mapName = MazeService.getName(inUseMaze);
+
+        req.setAttribute("keyName", UserService.getKeyName(u));
         req.setAttribute("coinsU", UserService.getnCoins(u));
-        req.setAttribute("mapId", mapId);
+        req.setAttribute("mapId", mapName);
         req.setAttribute("actualRoom", actualRoomid);
         req.setAttribute("room", roomJSONString);
 

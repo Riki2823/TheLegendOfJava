@@ -24,4 +24,8 @@ public class Key implements Item {
 
         return "\"key" + this.keyLevel + "\"";
     }
+    public String getName(){
+
+        return "Llave de nivel " + this.keyLevel;
+    }
 }

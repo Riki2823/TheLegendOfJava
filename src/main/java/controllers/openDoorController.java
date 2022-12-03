@@ -24,6 +24,11 @@ public class openDoorController extends HttpServlet {
 
         Room actualRoom = UserService.getActualRoom(u);
 
+        String mapName = MazeService.getName(inUseMaze);
+
+
+        req.setAttribute("keyName", UserService.getKeyName(u));
+        req.setAttribute("mapId", mapName);
         req.setAttribute("coinsU", UserService.getnCoins(u));
         req.setAttribute("actualRoom", actualRoom.getId());
 

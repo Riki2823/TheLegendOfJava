@@ -1,5 +1,6 @@
 package DAO;
 
+import Service.KeyService;
 import Service.RoomService;
 import model.*;
 
@@ -77,5 +78,13 @@ public class UserDao {
 
     public static void deleteItems(User u) {
         u.deleteItems();
+    }
+
+    public static String getKeyName(User u) {
+        Map<String, Item> items = u.getItems();
+        if (items.get("key") == null){
+            return "";
+        }
+        return KeyService.getKeyName(items.get("key"));
     }
 }

@@ -35,8 +35,15 @@ public class getKeyController extends HttpServlet {
             }else {
                 req.setAttribute("messageWall", "No tienes suficiente dinero para comprar esa llave");
             }
+        } else {
+            resp.sendError(403, "No puedes recoger una llave que no existe");
+            return;
         }
+        String mapName = MazeService.getName(inUseMaze);
 
+
+        req.setAttribute("keyName", UserService.getKeyName(u));
+        req.setAttribute("mapId", mapName);
         req.setAttribute("actualRoom", actualRoom.getId());
         req.setAttribute("coinsU", UserService.getnCoins(u));
 

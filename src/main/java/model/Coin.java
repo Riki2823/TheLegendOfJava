@@ -5,4 +5,9 @@ public class Coin implements Item{
     public String toString() {
         return "\"coin\"";
     }
+
+    @Override
+    public String getName() {
+        return null;
+    }
 }

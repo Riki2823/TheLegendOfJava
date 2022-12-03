@@ -34,7 +34,15 @@ public class getCoinController extends HttpServlet {
             UserService.addCoin(u);
             req.setAttribute("messageWall", "Acabas de obtener una moneda!!");
 
+        }else {
+            resp.sendError(403, "No puedes recoger una moneda que no existe");
+            return;
         }
+
+        String mapName = MazeService.getName(inUseMaze);
+
+        req.setAttribute("keyName", UserService.getKeyName(u));
+        req.setAttribute("mapId", mapName);
         req.setAttribute("actualRoom", actualRoom.getId());
         req.setAttribute("coinsU", UserService.getnCoins(u));
 

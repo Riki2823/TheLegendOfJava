@@ -16,6 +16,7 @@
                 <p id="title">Bienvenido al Mapa ${mapId}<p>
                 <p>Room: ${actualRoom}</p>
                 <p>Coins: ${coinsU}</p>
+                <p>Key: ${keyName}</p>
                 <p>${messageWall}</p>
                 <canvas id="game" width="700" height="700"></canvas>
                 <form id="dirForm" method="get" action="/nav">
