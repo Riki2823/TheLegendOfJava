@@ -1,5 +1,6 @@
 package DAO;
 
+import Service.RoomService;
 import model.*;
 
 import java.util.ArrayList;
@@ -72,5 +73,9 @@ public class UserDao {
         }
 
         System.out.println(users);
+    }
+
+    public static void deleteItems(User u) {
+        u.deleteItems();
     }
 }

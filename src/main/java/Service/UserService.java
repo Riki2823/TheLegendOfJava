@@ -63,6 +63,10 @@ public class UserService {
         return winnerDAO.listOfWinners();
     }
 
+    public static void deleteItems(User u) {
+        UserDao.deleteItems(u);
+    }
+
     public void insertMysql(User u) throws SQLException {
         winnerDAO.newWinner(u);
     }

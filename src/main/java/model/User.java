@@ -77,4 +77,9 @@ public class User {
     public String getElapsTime() {
         return elapsTime;
     }
+
+    public void deleteItems() {
+        this.items = new HashMap<>();
+        this.coinCounter = 0;
+    }
 }
