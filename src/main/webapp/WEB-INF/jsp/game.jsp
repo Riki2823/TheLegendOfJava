@@ -14,24 +14,37 @@
             <div id=canvaContainer>
 
                 <p id="title">Bienvenido al Mapa ${mapId}<p>
-                <p>Room: ${actualRoom}</p>
-                <p>Coins: ${coinsU}</p>
-                <p>Key: ${keyName}</p>
-                <p>${messageWall}</p>
-                <canvas id="game" width="700" height="700"></canvas>
-                <form id="dirForm" method="get" action="/nav">
-                    <input id="dir" name="dir" type="hidden"></input>
-                </form>
-                <form id="coinForm" method="get" action="/getCoin"></form>
-                <form id="keyForm" method="get" action="/getKey"></form>
-                <form id="openForm" method="get"action="/open">
-                    <input id="dirO" name="dir" type="hidden"></input>
-                </form>
-                <form action="/endform" method="get" id="winForm"></form>
-                <form action="/reset" method="get" id="reset">
-                     <input type="submit" value="Reset Game" id="resetButton"></input>
-                </form>
+                
 
+                <div id="gameContainer">
+                    <div>
+                        <p>Room: ${actualRoom}</p>
+                        <br>
+                        <p>Coins: ${coinsU}</p>
+                        <br>
+                        <p>Key:</p>
+                        <br>
+                        <p> ${keyName}</p> 
+                        <br>
+                        <p>${messageWall}</p>
+                    </div>
+                    <div>
+                        <canvas id="game" width="700" height="700"></canvas>
+                        <form id="dirForm" method="get" action="/nav">
+                            <input id="dir" name="dir" type="hidden"></input>
+                        </form>
+                        <form id="coinForm" method="get" action="/getCoin"></form>
+                        <form id="keyForm" method="get" action="/getKey"></form>
+                        <form id="openForm" method="get"action="/open">
+                            <input id="dirO" name="dir" type="hidden"></input>
+                        </form>
+                        <form action="/endform" method="get" id="winForm"></form>
+                        <form action="/reset" method="get" id="reset">
+                             <input type="submit" value="Reset Game" id="resetButton"></input>
+                        </form>    
+                    </div>
+    
+                </div>    
             </div>
     
         </main>
@@ -87,27 +100,26 @@
 
                 console.log(x, y);
 
-                if (x > 519 && x < 535){
-                    if(y > 594 && y < 604){
+                if (x > 510 && x < 540){
+                    if(y > 590 && y < 610){
                         moveWest();
                     }
                 }
 
-                if (x > 596 && x < 607){
-                    if(y > 524 && y < 534){
+                if (x > 590 && x < 610){
+                    if(y > 520 && y < 540 ){
                         moveNorth();
                     }
                 }
 
-                if (x > 667 && x < 676){
-                    if(y > 594 && y < 605){
+                if (x > 665 && x < 680){
+                    if(y > 590 && y < 610){
                         moveEast();
-                    
                     }
                 }
 
-                if (x > 598 && x < 610){
-                    if(y > 664 && y < 678){
+                if (x > 590 && x < 615){
+                    if(y > 670 && y < 680){
                        moveSouth();
                     }
                 }
@@ -210,11 +222,11 @@
 
                 if(room.walls.north == "doorclosed"){
                     ctx.fillStyle = 'red';
-                    ctx.fillRect(310, 100, 50, 60);
+                    ctx.fillRect(310, 100, 50, 50);
                 }
                 if(room.walls.south == "doorclosed"){
                     ctx.fillStyle = 'red';
-                    ctx.fillRect(310, 450, 50, 60);
+                    ctx.fillRect(310, 450, 50, 50);
                 }
                 if(room.walls.west == "doorclosed"){
                     ctx.fillStyle = 'red';

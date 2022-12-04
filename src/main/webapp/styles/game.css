@@ -36,6 +36,7 @@ canvas{
 
 p{
     margin-bottom: 2%;
+    
 }
 
 #resetButton{
@@ -48,4 +49,11 @@ p{
 
 #resetButton:hover{
     background-color: #FFCFDE;
+}
+
+#gameContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }

@@ -10,7 +10,7 @@
     </head>
     <body>
         <div>
-            <h1>Enorabuea has superado la Mazmorra</h1>
+            <h1>Enhorabuena has superado la Mazmorra</h1>
             <h2>Introduce tu nombre!!!</h2>
             <form action="/endform" method="post">
                 <input type="text" name="name" id="name" id="inicials"></input>
